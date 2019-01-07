@@ -1,9 +1,9 @@
 # jb-giphy-search
 
 ## Project setup
-```
-yarn install
-```
+1. `yarn install`
+2. Copy `.env.example` to `.env.local` and fill with config
+
 
 ### Compiles and hot-reloads for development
 ```
