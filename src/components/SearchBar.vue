@@ -3,7 +3,7 @@
     <div class="c-searchBar__spacer"></div>
     <div class="c-searchBar__fixed">
       <div class="c-searchBar__inner">
-        <form @submit.prevent="search" class="c-searchBar__form">
+        <form class="c-searchBar__form" @submit.prevent="search">
           <div class="c-searchBar__inputWrapper">
             <input v-model="searchQuery" class="c-searchBar__input" />
           </div>
@@ -31,15 +31,15 @@ export default {
     return { searchQuery: '' };
   },
 
-  methods: {
-    search() {
-      this.$emit('search', this.searchQuery);
-    },
-  },
-
   computed: {
     buttonText() {
       return this.isSearching ? 'Searching...' : 'Search';
+    },
+  },
+
+  methods: {
+    search() {
+      this.$emit('search', this.searchQuery);
     },
   },
 };

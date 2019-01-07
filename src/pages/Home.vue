@@ -1,6 +1,6 @@
 <template>
   <div class="c-pageHome">
-    <SearchBar :isSearching="isSearching" @search="search" />
+    <SearchBar :is-searching="isSearching" @search="search" />
     <section class="c-pageHome__section">
       <h2>Search Results</h2>
       <div v-if="info" class="c-pageHome__info">{{ info }}</div>
@@ -41,6 +41,30 @@ export default {
       searchCount: 0,
       isLoadingMore: false,
     };
+  },
+
+  computed: {
+    info() {
+      const { error, searchResults, searchCount } = this;
+
+      if (error) {
+        return `Error when downloading: ${error}`;
+      }
+
+      if (!searchCount) {
+        return 'Use search bar above to search for GIFs';
+      }
+
+      if (searchResults.length === 0) {
+        return 'Sorry, nothing found';
+      }
+
+      return '';
+    },
+
+    loadMoreText() {
+      return this.isLoadingMore ? 'Loading...' : 'Load More';
+    },
   },
 
   methods: {
@@ -85,30 +109,6 @@ export default {
         .finally(() => {
           this.isLoadingMore = false;
         });
-    },
-  },
-
-  computed: {
-    info() {
-      const { error, searchResults, searchCount } = this;
-
-      if (error) {
-        return `Error when downloading: ${error}`;
-      }
-
-      if (!searchCount) {
-        return 'Use search bar above to search for GIFs';
-      }
-
-      if (searchResults.length === 0) {
-        return 'Sorry, nothing found';
-      }
-
-      return '';
-    },
-
-    loadMoreText() {
-      return this.isLoadingMore ? 'Loading...' : 'Load More';
     },
   },
 };

@@ -6,7 +6,7 @@
 import Home from './pages/Home';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Home,
   },

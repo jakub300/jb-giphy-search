@@ -1,7 +1,7 @@
 <template>
   <div class="c-gifsList">
     <div v-for="gif in list" :key="gif.id" class="c-gifsList__element">
-      <GifsListGif :gif="gif" :cornerAction="cornerAction" />
+      <GifsListGif :gif="gif" :corner-action="cornerAction" />
     </div>
   </div>
 </template>
