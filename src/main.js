@@ -1,8 +1,9 @@
 import Vue from 'vue';
-import App from './App';
-import store from './store';
 
 import './styles/global.scss';
+
+import App from './App';
+import store from './store';
 
 Vue.config.productionTip = false;
 
