@@ -37,6 +37,13 @@ export default {
   @include bp(xlarge) {
     justify-content: space-between;
   }
+
+  &::after {
+    @include bp(xlarge) {
+      content: '';
+      flex: auto;
+    }
+  }
 }
 
 .c-gifsList__element {
