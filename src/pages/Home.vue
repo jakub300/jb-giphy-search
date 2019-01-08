@@ -1,7 +1,7 @@
 <template>
   <div class="c-pageHome">
     <SearchBar :is-searching="isSearching" @search="search" />
-    <section class="c-pageHome__section">
+    <section class="c-pageHome__section c-pageHome__results">
       <h2 class="c-pageHome__heading">Search Results</h2>
       <div v-if="info" class="c-pageHome__info">{{ info }}</div>
       <div v-else>
@@ -13,7 +13,7 @@
         </div>
       </div>
     </section>
-    <section class="c-pageHome__section">
+    <section class="c-pageHome__section c-pageHome__favorites">
       <h2 class="c-pageHome__heading">Favorites</h2>
       <div v-if="favorites.length === 0" class="c-pageHome__info">Nothing here yet.</div>
       <div v-else>
@@ -123,7 +123,7 @@ export default {
 </script>
 
 <style lang="scss">
-.c-pageHome {
+.c-pageHome__section {
   padding: 1rem;
 
   @include bp(medium) {
@@ -131,8 +131,8 @@ export default {
   }
 }
 
-.c-pageHome__section {
-  margin-bottom: 2rem;
+.c-pageHome__results {
+  padding-bottom: calc(35vh + 1rem);
 }
 
 .c-pageHome__heading {
@@ -143,5 +143,17 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+}
+
+.c-pageHome__favorites {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+  width: 100%;
+  max-height: 35vh;
+  border-top: 1px solid $color-black;
+
+  background-color: $color-white;
 }
 </style>
