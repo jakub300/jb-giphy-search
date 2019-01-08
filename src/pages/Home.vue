@@ -2,10 +2,10 @@
   <div class="c-pageHome">
     <SearchBar :is-searching="isSearching" @search="search" />
     <section class="c-pageHome__section">
-      <h2>Search Results</h2>
+      <h2 class="c-pageHome__heading">Search Results</h2>
       <div v-if="info" class="c-pageHome__info">{{ info }}</div>
       <div v-else>
-        <div class="c-pageHome__resultsWrapper"><GifsList :list="searchResults" /></div>
+        <div class="c-pageHome__listWrapper"><GifsList :list="searchResults" /></div>
         <div v-if="hasMore" class="c-pageHome__moreWrapper">
           <button class="c-pageHome__more" :disabled="isLoadingMore" @click="loadMore">
             {{ loadMoreText }}
@@ -14,8 +14,13 @@
       </div>
     </section>
     <section class="c-pageHome__section">
-      <h2>Favorites</h2>
-      <!--  -->
+      <h2 class="c-pageHome__heading">Favorites</h2>
+      <div v-if="favorites.length === 0" class="c-pageHome__info">Nothing here yet.</div>
+      <div v-else>
+        <div class="c-pageHome__listWrapper">
+          <GifsList :list="favorites" corner-action="remove" />
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -24,6 +29,7 @@
 import { search } from '@/api';
 import SearchBar from '@/components/SearchBar';
 import GifsList from '@/components/GifsList';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -44,6 +50,8 @@ export default {
   },
 
   computed: {
+    ...mapState('favorites', ['favorites']),
+
     info() {
       const { error, searchResults, searchCount } = this;
 
@@ -125,6 +133,10 @@ export default {
 
 .c-pageHome__section {
   margin-bottom: 2rem;
+}
+
+.c-pageHome__heading {
+  margin-bottom: 1rem;
 }
 
 .c-pageHome__moreWrapper {

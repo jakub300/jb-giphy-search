@@ -57,6 +57,7 @@ export default {
   left: 0;
   width: 100%;
   background-color: $color-white;
+  z-index: 10;
 
   display: flex;
   align-items: center;

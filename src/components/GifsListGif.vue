@@ -14,7 +14,7 @@
         </picture>
       </a>
       <div class="c-gifsListGif__corner">
-        <button class="c-gifsListGif__cornerButton">
+        <button class="c-gifsListGif__cornerButton" @click="buttonAction">
           <svg
             v-if="currentIcon"
             :key="currentIconName"
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+
 const icons = {
   starOutline: {
     title: 'Add to favorites',
@@ -71,6 +73,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters('favorites', { favoritesById: 'byId' }),
+
     previewGif() {
       return this.gif.images.preview_gif;
     },
@@ -82,7 +86,7 @@ export default {
     icons: () => icons,
 
     isFavorited() {
-      return false;
+      return Boolean(this.favoritesById[this.gif.id]);
     },
 
     currentIconName() {
@@ -95,6 +99,22 @@ export default {
 
     currentIcon() {
       return this.icons[this.currentIconName];
+    },
+
+    buttonAction() {
+      return this.isFavorited ? this.remove : this.add;
+    },
+  },
+
+  methods: {
+    ...mapMutations('favorites', { favoritesAdd: 'add', favouritesRemove: 'remove' }),
+
+    add() {
+      this.favoritesAdd(this.gif);
+    },
+
+    remove() {
+      this.favouritesRemove(this.gif.id);
     },
   },
 };
