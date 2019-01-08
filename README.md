@@ -1,5 +1,7 @@
 # jb-giphy-search
 
+Online Preview: https://jb-giphy-search.netlify.com/
+
 ## Project setup
 1. `yarn install`
 2. Copy `.env.example` to `.env.local` and fill with config
