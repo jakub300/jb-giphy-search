@@ -14,7 +14,7 @@
       </div>
     </section>
     <section class="c-pageHome__section">
-      <h2>Favourites</h2>
+      <h2>Favorites</h2>
       <!--  -->
     </section>
   </div>

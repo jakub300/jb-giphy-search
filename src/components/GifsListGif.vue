@@ -1,5 +1,5 @@
 <template>
-  <article class="c-gifsListGif" :class="[`action-${cornerAction}`, { isFavourited }]">
+  <article class="c-gifsListGif" :class="[`action-${cornerAction}`, { isFavorited }]">
     <div class="c-gifsListGif__inner">
       <a :href="gif.url" target="_blank" :title="gif.title" class="c-gifsListGif__link">
         <picture>
@@ -35,21 +35,21 @@
 <script>
 const icons = {
   starOutline: {
-    title: 'Add to favourites',
+    title: 'Add to favorites',
     viewBox: '0 0 576 512',
     path:
       'M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z',
   },
 
   starSolid: {
-    title: 'Remove from favourites',
+    title: 'Remove from favorites',
     viewBox: '0 0 576 512',
     path:
       'M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z',
   },
 
   x: {
-    title: 'Remove from favourites',
+    title: 'Remove from favorites',
     viewBox: '0 0 352 512',
     path:
       'M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z',
@@ -81,7 +81,7 @@ export default {
 
     icons: () => icons,
 
-    isFavourited() {
+    isFavorited() {
       return false;
     },
 
@@ -90,7 +90,7 @@ export default {
         return 'x';
       }
 
-      return this.isFavourited ? 'starSolid' : 'starOutline';
+      return this.isFavorited ? 'starSolid' : 'starOutline';
     },
 
     currentIcon() {
